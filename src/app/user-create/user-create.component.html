@@ -1,0 +1,45 @@
+<div class="container">
+    <form [formGroup]="userForm" (ngSubmit)="postData()">
+        <div class="row">
+            <div class="col-lg-6">
+                <label for="">Name</label>
+                <input type="text" formControlName="name" class="form-control" [ngClass]="{'control-error':!userForm.get('name')?.valid && userForm.get('name')?.dirty}">
+                <span *ngIf="userForm.get('name')?.invalid && userForm.get('name')?.dirty" style="color: red;">Username should be more than 5 letters</span>
+            </div>
+            <div class="col-lg-6">
+                <label for="">E-Mail</label>
+                <input type="email" formControlName="email" class="form-control">
+                <span *ngIf="!userForm.get('email')?.valid && userForm.get('email')?.dirty" style="color: red;">Enter a valid Email</span>
+            </div>
+            <div class="col-lg-6">
+                <label for="">Contact</label>
+                <input type="text" formControlName="contact" class="form-control">
+                <span *ngIf="!userForm.get('contact')?.valid && userForm.get('contact')?.dirty" style="color: red;">Enter a valid Number</span>
+            </div>
+            <div class="col-lg-6">
+                <label for="">Course</label>
+                <input type="text" formControlName="course" class="form-control">
+            </div>
+            <div class="col-lg-6">
+                <label for="">Country</label>
+                <select class="form-control" formControlName="country">
+                    <option>India</option>
+                    <option>America</option>
+                </select>
+            </div> 
+            <div class="col-lg-6">
+                <label for="">State </label>
+                <select class="form-control" formControlName="state">
+                    <option>TN</option>
+                    <option>Odisha</option>
+                    <option>NY</option>
+                    <option>Seatle</option>
+                </select>
+            </div> 
+            
+            <div class="col-lg-6 mt-3">
+                <input [disabled]="userForm.invalid" type="submit" class="btn btn-primary">
+            </div>
+        </div>
+    </form>
+</div>
